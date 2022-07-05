@@ -11,6 +11,7 @@ export const TextStyles = StyleSheet.create({
     color: 'black',
     fontSize: 16,
     textAlign: 'center',
+    fontWeight: 'bold',
   },
   highlight: {
     color: Colors.blue,

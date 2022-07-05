@@ -1,14 +1,12 @@
 import {StyleSheet} from 'react-native';
 
 export const ContainerStyles = StyleSheet.create({
-  modal: (backgroundOpacity?: number) => {
+  modal: (backgroundOpacity = 0.5) => {
     return {
       flex: 1,
       justifyContent: 'center',
       alignItems: 'center',
-      backgroundColor: backgroundOpacity
-        ? `rgba(0, 0, 0, ${backgroundOpacity})`
-        : 'rgba(0, 0, 0, 0.5)',
+      backgroundColor: `rgba(0, 0, 0, ${backgroundOpacity})`,
     };
   },
   center: {

@@ -1,14 +1,35 @@
 import React, {useState} from 'react';
-import {TouchableOpacity} from 'react-native';
+import {TouchableOpacity, View} from 'react-native';
+import Prompt from './src/Prompt/Prompt';
 import Toast from './src/Toast/Toast';
 
 const App = () => {
-  const [visible, setVisible] = useState(false);
+  const [promptVisible, setPromptVisible] = useState(false);
+  const [toastVisible, setToastVisible] = useState(false);
 
   return (
-    <TouchableOpacity onPress={() => setVisible(true)} style={{flex: 0.5}}>
-      <Toast visibilityState={[visible, setVisible]} title="Some test title" />
-    </TouchableOpacity>
+    <View style={{flex: 1, backgroundColor: 'red'}}>
+      <TouchableOpacity
+        onPress={() => setPromptVisible(true)}
+        style={{flex: 1}}>
+        <Prompt
+          title="test"
+          description="yeees"
+          visibilityState={[promptVisible, setPromptVisible]}
+          onSubmit={console.log}
+          language="PL"
+        />
+      </TouchableOpacity>
+      <TouchableOpacity
+        onPress={() => setToastVisible(true)}
+        style={{flex: 1, backgroundColor: 'blue'}}>
+        <Toast
+          visibilityState={[toastVisible, setToastVisible]}
+          title="Some test title"
+          message="Some  message"
+        />
+      </TouchableOpacity>
+    </View>
   );
 };
 

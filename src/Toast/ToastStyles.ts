@@ -5,7 +5,7 @@ export const ToastStyles = StyleSheet.create({
   container: {
     backgroundColor: 'white',
     borderRadius: 20,
-    maxWidth: '80%',
+    width: '80%',
   },
   content: {
     paddingVertical: 20,
@@ -13,7 +13,7 @@ export const ToastStyles = StyleSheet.create({
   },
   closeButton: {
     borderTopWidth: 1,
-    borderColor: Colors.gray,
+    borderColor: Colors.darkGray,
     padding: 10,
   },
 });

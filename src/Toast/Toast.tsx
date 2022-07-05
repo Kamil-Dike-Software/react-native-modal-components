@@ -1,10 +1,7 @@
-import React, {Dispatch} from 'react';
+import React from 'react';
 import {
   Modal,
-  ModalProps,
-  StyleProp,
   Text,
-  TextStyle,
   TouchableOpacity,
   TouchableWithoutFeedback,
   View,
@@ -12,17 +9,7 @@ import {
 import {ToastStyles} from './ToastStyles';
 import {TextStyles} from '../styles/TextStyles';
 import {ContainerStyles} from '../styles/ContainerStyles';
-
-interface ToastProps {
-  title: string;
-  visibilityState: [visible: boolean, setVisibility: Dispatch<boolean>];
-  message?: string;
-  titleTextStyle?: StyleProp<TextStyle>;
-  messageTextStyle?: StyleProp<TextStyle>;
-  buttonTextStyle?: StyleProp<TextStyle>;
-  animationType?: ModalProps['animationType'];
-  backgroundOpacity?: number;
-}
+import {IModalComponent} from '../interfaces/IModalComponent';
 
 const Toast = ({
   title,
@@ -33,7 +20,7 @@ const Toast = ({
   buttonTextStyle,
   animationType,
   backgroundOpacity,
-}: ToastProps) => {
+}: IModalComponent) => {
   const hide = () => setVisibility(false);
 
   return !visible ? null : (
