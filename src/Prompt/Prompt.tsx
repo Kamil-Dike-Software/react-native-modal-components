@@ -68,6 +68,7 @@ const Prompt = ({
                   onChangeText={setInput}
                   onSubmitEditing={submit}
                   placeholder={placeholder}
+                  autoFocus={true}
                 />
               </View>
             </View>
