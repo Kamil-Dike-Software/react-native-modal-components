@@ -7,9 +7,9 @@ import {
   View,
 } from 'react-native';
 import {ToastStyles} from './ToastStyles';
-import {TextStyles} from '../styles/TextStyles';
-import {ContainerStyles} from '../styles/ContainerStyles';
-import {IModalComponent} from '../interfaces/IModalComponent';
+import {TextStyles} from '../../styles/TextStyles';
+import {ContainerStyles} from '../../styles/ContainerStyles';
+import {IModalComponent} from '../../interfaces/IModalComponent';
 
 const Toast = ({
   title,
@@ -23,8 +23,11 @@ const Toast = ({
 }: IModalComponent) => {
   const hide = () => setVisibility(false);
 
-  return !visible ? null : (
-    <Modal transparent={true} animationType={animationType || 'fade'}>
+  return (
+    <Modal
+      transparent={true}
+      animationType={animationType || 'fade'}
+      visible={visible}>
       <TouchableOpacity
         onPressIn={hide}
         style={ContainerStyles.modal(backgroundOpacity)}>

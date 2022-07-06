@@ -7,7 +7,7 @@ import React from 'react';
 
 // Note: test renderer must be required after react-native.
 import {fireEvent, render, screen} from '@testing-library/react-native';
-import Toast from '../src/Toast/Toast';
+import Toast from '../src/components/Toast/Toast';
 
 let handleClose: jest.Mock;
 

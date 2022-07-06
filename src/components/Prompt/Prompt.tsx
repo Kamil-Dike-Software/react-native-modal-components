@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import {ContainerStyles} from '../styles/ContainerStyles';
+import {ContainerStyles} from '../../styles/ContainerStyles';
 import {
   Modal,
   StyleProp,
@@ -10,10 +10,10 @@ import {
   TouchableWithoutFeedback,
   View,
 } from 'react-native';
-import {TextStyles} from '../styles/TextStyles';
+import {TextStyles} from '../../styles/TextStyles';
 import {PromptStyles} from './PromptStyles';
-import {IModalComponent} from '../interfaces/IModalComponent';
-import {Cancel} from '../consts/Translations';
+import {IModalComponent} from '../../interfaces/IModalComponent';
+import {CancelTranslation} from '../../consts/Translations';
 
 type omit = 'message' | 'messageTextStyle';
 
@@ -47,8 +47,11 @@ const Prompt = ({
     onSubmit(input);
   };
 
-  return !visible ? null : (
-    <Modal transparent={true} animationType={animationType || 'fade'}>
+  return (
+    <Modal
+      transparent={true}
+      animationType={animationType || 'fade'}
+      visible={visible}>
       <TouchableOpacity
         onPressIn={hide}
         style={ContainerStyles.modal(backgroundOpacity)}>
@@ -77,7 +80,7 @@ const Prompt = ({
                 onPress={hide}
                 style={[PromptStyles.button, PromptStyles.buttonLeft]}>
                 <Text style={[TextStyles.highlight, buttonTextStyle]}>
-                  {Cancel[language]}
+                  {CancelTranslation[language]}
                 </Text>
               </TouchableOpacity>
               <TouchableOpacity

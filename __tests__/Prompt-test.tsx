@@ -7,7 +7,7 @@ import React from 'react';
 
 // Note: test renderer must be required after react-native.
 import {fireEvent, render, screen} from '@testing-library/react-native';
-import Prompt from '../src/Prompt/Prompt';
+import Prompt from '../src/components/Prompt/Prompt';
 
 let handleClose: jest.Mock;
 let handleSubmit: jest.Mock;
