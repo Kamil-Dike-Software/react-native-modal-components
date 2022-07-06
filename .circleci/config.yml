@@ -1,0 +1,16 @@
+version: 2
+jobs:
+  test:
+    working_directory: ~/repo
+    docker:
+      - image: reactnativecommunity/react-native-android
+    steps:
+      - checkout
+      - run: yarn install
+      - run: yarn run test
+
+workflows:
+  version: 2
+  test:
+    jobs:
+      - test
