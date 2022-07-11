@@ -21,13 +21,13 @@ export const PromptStyles = StyleSheet.create({
     justifyContent: 'center',
     borderColor: Colors.darkGray,
     borderTopWidth: 1,
-    paddingVertical: 20,
+    paddingVertical: 14,
   },
   buttonLeft: {
-    borderRightWidth: 0.5,
+    borderRightWidth: 0.55,
   },
   buttonRight: {
-    borderLeftWidth: 0.5,
+    borderLeftWidth: 0.55,
   },
   textInputContainer: {
     borderColor: Colors.darkGray,

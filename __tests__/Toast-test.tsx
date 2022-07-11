@@ -10,15 +10,18 @@ import {fireEvent, render, screen} from '@testing-library/react-native';
 import Toast from '../src/components/Toast/Toast';
 
 let handleClose: jest.Mock;
+let handleSubmit: jest.Mock;
 
 beforeEach(() => {
   handleClose = jest.fn();
+  handleSubmit = jest.fn();
 
   render(
     <Toast
       title="Some test title"
       visibilityState={[true, handleClose]}
       message="Some test message"
+      onSubmit={handleSubmit}
     />,
   );
 });
@@ -35,4 +38,11 @@ it('Toast closes correctly with button', () => {
   fireEvent.press(exitButton);
 
   expect(handleClose).toBeCalled();
+});
+
+it('Toast fires submit', () => {
+  const exitButton = screen.getByText('OK');
+  fireEvent.press(exitButton);
+
+  expect(handleSubmit).toBeCalled();
 });

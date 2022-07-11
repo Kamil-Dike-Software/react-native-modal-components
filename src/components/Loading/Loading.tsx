@@ -1,19 +1,14 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, Modal, ModalProps, Text, View} from 'react-native';
+import React from 'react';
+import {ActivityIndicator, Modal, ModalProps, View} from 'react-native';
 import {ContainerStyles} from '../../styles/ContainerStyles';
-import {LoadingStyles} from './LoadingStyles';
-import {LanguageType} from '../../types/LanguageType';
-import {LoadingTranslation} from '../../consts/Translations';
 
 interface LoadingProps {
   visible: boolean;
   animationType?: ModalProps['animationType'];
   backgroundOpacity?: number;
-  color?: string;
-  animated?: boolean;
-  language?: LanguageType;
+  backgroundColor?: string;
+  indicatorColor?: string;
   CustomIndicator?: React.ReactNode;
-  textVisible?: boolean;
   size?: 'small' | 'large';
 }
 
@@ -21,51 +16,22 @@ const Loading = ({
   visible,
   animationType,
   backgroundOpacity,
-  color = 'white',
-  animated = true,
-  language = 'EN',
+  backgroundColor,
+  indicatorColor = 'white',
   CustomIndicator,
-  textVisible = true,
-  size = 'small',
+  size = 'large',
 }: LoadingProps) => {
-  const [dots, setDots] = useState(animated ? 1 : 3);
-
-  useEffect(() => {
-    if (!animated) return;
-    const intervalId = setInterval(() => {
-      dots < 3 ? setDots(dots + 1) : setDots(1);
-    }, 1000);
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [dots, animated]);
-
   return (
     <Modal
       transparent={true}
       animationType={animationType || 'fade'}
-      visible={visible}>
-      <View style={ContainerStyles.modal(backgroundOpacity)}>
+      visible={visible}
+      testID="loadingModal">
+      <View style={ContainerStyles.modal(backgroundOpacity, backgroundColor)}>
         {CustomIndicator ? (
           CustomIndicator
         ) : (
-          <ActivityIndicator size={size} color={color} animating={animated} />
-        )}
-        {textVisible && (
-          <View style={LoadingStyles.textContainer}>
-            <Text
-              style={[
-                LoadingStyles.text(color),
-                LoadingStyles.loadingTextContainer,
-              ]}>
-              {LoadingTranslation[language]}
-            </Text>
-            <Text
-              style={[LoadingStyles.text(color), LoadingStyles.dotsContainer]}>
-              {' '}
-              {Array.from({length: dots}).map(() => '. ')}
-            </Text>
-          </View>
+          <ActivityIndicator size={size} color={indicatorColor} />
         )}
       </View>
     </Modal>

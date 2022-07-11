@@ -14,6 +14,7 @@ import {TextStyles} from '../../styles/TextStyles';
 import {PromptStyles} from './PromptStyles';
 import {IModalComponent} from '../../interfaces/IModalComponent';
 import {CancelTranslation} from '../../consts/Translations';
+import {LanguageType} from '../../types/LanguageType';
 
 type omit = 'message' | 'messageTextStyle';
 
@@ -22,6 +23,7 @@ interface PromptProps extends Omit<IModalComponent, omit> {
   description?: string;
   descriptionTextStyle?: StyleProp<TextStyle>;
   placeholder?: string;
+  language: LanguageType;
 }
 
 const Prompt = ({
@@ -36,6 +38,7 @@ const Prompt = ({
   buttonTextStyle,
   animationType,
   backgroundOpacity,
+  backgroundColor,
 }: PromptProps) => {
   const [input, setInput] = useState('');
   const hide = () => {
@@ -54,7 +57,7 @@ const Prompt = ({
       visible={visible}>
       <TouchableOpacity
         onPressIn={hide}
-        style={ContainerStyles.modal(backgroundOpacity)}>
+        style={ContainerStyles.modal(backgroundOpacity, backgroundColor)}>
         <TouchableWithoutFeedback>
           <View style={[PromptStyles.container, ContainerStyles.shadow]}>
             <View style={PromptStyles.content}>

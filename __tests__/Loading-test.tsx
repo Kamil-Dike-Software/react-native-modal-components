@@ -12,7 +12,7 @@ import Loading from '../src/components/Loading/Loading';
 it('Loading renders correctly', () => {
   render(<Loading visible={true} />);
 
-  const loadingText = screen.getByText('Loading');
+  const loadingModal = screen.getByTestId('loadingModal');
 
-  expect([loadingText]).toBeDefined();
+  expect(loadingModal).toBeDefined();
 });

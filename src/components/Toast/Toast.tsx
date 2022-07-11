@@ -11,6 +11,10 @@ import {TextStyles} from '../../styles/TextStyles';
 import {ContainerStyles} from '../../styles/ContainerStyles';
 import {IModalComponent} from '../../interfaces/IModalComponent';
 
+interface ToastProps extends IModalComponent {
+  onSubmit?: () => void;
+}
+
 const Toast = ({
   title,
   message,
@@ -20,8 +24,16 @@ const Toast = ({
   buttonTextStyle,
   animationType,
   backgroundOpacity,
-}: IModalComponent) => {
+  backgroundColor,
+  onSubmit,
+}: ToastProps) => {
   const hide = () => setVisibility(false);
+  const submit = () => {
+    if (onSubmit) {
+      onSubmit();
+    }
+    hide();
+  };
 
   return (
     <Modal
@@ -30,7 +42,7 @@ const Toast = ({
       visible={visible}>
       <TouchableOpacity
         onPressIn={hide}
-        style={ContainerStyles.modal(backgroundOpacity)}>
+        style={ContainerStyles.modal(backgroundOpacity, backgroundColor)}>
         <TouchableWithoutFeedback>
           <View style={[ToastStyles.container, ContainerStyles.shadow]}>
             <View style={ToastStyles.content}>
@@ -43,7 +55,7 @@ const Toast = ({
             </View>
             <TouchableOpacity
               style={[ContainerStyles.center, ToastStyles.closeButton]}
-              onPress={hide}>
+              onPress={submit}>
               <Text style={[TextStyles.highlight, buttonTextStyle]}>OK</Text>
             </TouchableOpacity>
           </View>

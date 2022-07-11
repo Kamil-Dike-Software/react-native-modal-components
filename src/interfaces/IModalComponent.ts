@@ -1,6 +1,5 @@
 import {Dispatch} from 'react';
 import {ModalProps, StyleProp, TextStyle} from 'react-native';
-import {LanguageType} from '../types/LanguageType';
 
 export interface IModalComponent {
   title: string;
@@ -11,5 +10,5 @@ export interface IModalComponent {
   buttonTextStyle?: StyleProp<TextStyle>;
   animationType?: ModalProps['animationType'];
   backgroundOpacity?: number;
-  language?: LanguageType;
+  backgroundColor?: string;
 }
